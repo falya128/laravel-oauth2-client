@@ -78,6 +78,30 @@ class AuthController extends Controller
     }
 
     /**
+     * ログアウト
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function logout(Request $request): RedirectResponse
+    {
+        /** @var User ログインユーザ */
+        $user = Auth::user();
+        $user = $user->makeVisible(['access_token']);
+
+        $url = env('LARAVELPASSPORT_HOST') . '/api/token/' . env('LARAVELPASSPORT_CLIENT_ID');
+        $this->authorizedRequest($user->access_token)->delete($url);
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        $query = http_build_query(['redirect_uri' => url('/')]);
+        return redirect(env('LARAVELPASSPORT_HOST') . '/logout?' . $query);
+    }
+
+    /**
      * OAuth サーバからアクセストークンを取得
      *
      * @param string $codeVerifier

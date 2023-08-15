@@ -17,3 +17,7 @@ Route::get('/auth/redirect', [\App\Http\Controllers\AuthController::class, 'redi
 Route::get('/auth/callback', [\App\Http\Controllers\AuthController::class, 'callback']);
 
 Route::get('/', fn () => view('app'));
+
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+});
