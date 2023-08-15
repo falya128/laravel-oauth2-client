@@ -10,7 +10,7 @@ const user = await axios
 <template>
   <div class="flex justify-center">
     <div class="max-w-md w-full rounded overflow-hidden shadow-lg my-6 mx-4 md:mx-auto">
-      <div class="font-bold text-xl px-4 py-6">ログインユーザ情報</div>
+      <div class="font-bold text-xl px-4 py-6">ログインユーザ確認</div>
       <template v-if="user !== null">
         <div class="border-y border-gray-100">
           <dl class="divide-y divide-gray-100">
