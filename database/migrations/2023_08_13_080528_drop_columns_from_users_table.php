@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('email');
             $table->dropColumn('email_verified_at');
             $table->dropColumn('password');
             $table->dropColumn('remember_token');
+
+            $table->dropUnique(['email']);
         });
     }
 
@@ -25,10 +26,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('email')->unique()->after('name');
             $table->timestamp('email_verified_at')->nullable()->after('email');
             $table->string('password')->after('email_verified_at');
             $table->rememberToken()->after('password');
+
+            $table->unique(['email']);
         });
     }
 };
