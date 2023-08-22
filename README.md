@@ -2,7 +2,7 @@
 
 ## 概要
 
-OAuth 2.0 を用いた認証機能の構築手順を理解するために作成した Laravel プロジェクトです。  
+OAuth2 を用いた認証機能の構築手順を理解するために作成した Laravel プロジェクトです。  
 詳細についてはこちらの Qiita 記事をご参照ください。  
 https://qiita.com/falya128/items/652a0d150faaaeb58b2b
 
